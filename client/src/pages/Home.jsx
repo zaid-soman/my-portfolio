@@ -25,7 +25,6 @@ export const Home = () => {
         <ProjectsSection />
         <CertificatesSection />
         <ContactSection />
-        
       </main>
 
       {/* Footer */}

@@ -157,10 +157,10 @@ export const ContactSection = () => {
                     Phone
                   </p>
                   <a
-                    href="tel:+919315145594"
+                    href="tel:+962778085117"
                     className="text-sm sm:text-base font-medium hover:text-primary transition-colors"
                   >
-                    +91 9315145594
+                    +962 778085117
                   </a>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export const ContactSection = () => {
                     Location
                   </p>
                   <span className="text-sm sm:text-base font-medium">
-                    Bengaluru, Karnataka India
+                    Amman, Jordan
                   </span>
                 </div>
               </div>
