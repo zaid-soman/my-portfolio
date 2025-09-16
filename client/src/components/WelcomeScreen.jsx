@@ -30,9 +30,9 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
   const currentColors = colors[theme] || colors.dark;
   const portfolioUrl = "zaidsoman.dev";
   const welcomeMessages = [
-    "Crafting digital experiences",
-    "Software Engineer",
-    "Full-stack development",
+    "REACT DEVELOPER",
+    "DATA SCIENTIS",
+    "FULL STACK DEVELOPER",
   ];
 
   useEffect(() => {

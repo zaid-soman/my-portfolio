@@ -2,38 +2,39 @@
 import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { useInView } from "framer-motion";
-import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Award, ChevronLeft, ChevronRight } from "lucide-react";
 
-export const TestimonialSection = () => {
+export const CertificatesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const testimonials = [
+  // Example certificates data
+  const certificates = [
     {
       id: 1,
-      name: "Alex Johnson",
-      role: "Product Director at TechCorp",
-      content: `Working with Zaid Soman was seamless from day one. Not only did they deliver a full-stack solution ahead of schedule, but they also communicated clearly throughout the project. It's rare to find a developer who understands both the tech and the business side so well`,
-      rating: 5,
-      image: "/testimonials/alex-johnson.png",
+      title: "Python AI (Machine Learning)",
+      issuer: "Coursera / University of Michigan",
+      date: "2024",
+      image: "/certificates/python-ai.png",
+      url: "#",
     },
     {
       id: 2,
-      name: "Maria Chen",
-      role: "Senior UX Designer at DesignHub",
-      content: `I've reviewed hundreds of portfolios, and his work is truly exceptional. Tway the animations guide attention while maintaining performance is masterful. The gradient elements add depth without overwhelming.`,
-      rating: 5,
-      image: "/testimonials/maria-chen.png",
+      title: "Full-Stack Web Development",
+      issuer: "Udemy",
+      date: "2023",
+      image: "/certificates/fullstack.png",
+      url: "#",
     },
     {
       id: 3,
-      name: "David Wilson",
-      role: "CTO at Startup Ventures",
-      content: `From wireframes to deployment, Zaid Soman owned the entire stack with confidence and creativity. The final product is fast, reliable, and looks incredible. I wouldn't hesitate to work with them again.`,
-      rating: 5,
-      image: "/testimonials/David Wilson.png",
+      title: "Data Science & AI",
+      issuer: "University of Al-Hussein Bin Talal",
+      date: "2025",
+      image: "/certificates/datascience.png",
+      url: "#",
     },
   ];
 
@@ -48,30 +49,28 @@ export const TestimonialSection = () => {
       }
       setCurrentIndex(0);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+  const totalPages = Math.ceil(certificates.length / itemsPerPage);
 
-  const nextTestimonial = () => {
+  const nextCertificate = () => {
     setCurrentIndex((prev) => (prev + 1) % totalPages);
   };
 
-  const prevTestimonial = () => {
+  const prevCertificate = () => {
     setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
-  const visibleTestimonials = testimonials.slice(
+  const visibleCertificates = certificates.slice(
     currentIndex * itemsPerPage,
     (currentIndex + 1) * itemsPerPage
   );
 
-  // Fill empty slots on last page if needed
-  while (visibleTestimonials.length < itemsPerPage) {
-    visibleTestimonials.push(testimonials[visibleTestimonials.length]);
+  while (visibleCertificates.length < itemsPerPage) {
+    visibleCertificates.push(certificates[visibleCertificates.length]);
   }
 
   const containerVariants = {
@@ -99,7 +98,7 @@ export const TestimonialSection = () => {
 
   return (
     <section
-      id="testimonials"
+      id="certificates"
       className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-primary/5 via-background to-background"
       ref={ref}
     >
@@ -151,78 +150,65 @@ export const TestimonialSection = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <Star className="h-3 w-3 sm:h-4 sm:w-4" />
-              Client Feedback
-              <Star className="h-3 w-3 sm:h-4 sm:w-4" />
+              <Award className="h-4 w-4" />
+              My Certificates
+              <Award className="h-4 w-4" />
             </motion.div>
             <motion.h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight"
               variants={itemVariants}
             >
-              What People Say
+              Achievements & Credentials
             </motion.h2>
             <motion.p
               className="text-base sm:text-lg text-muted-foreground mt-3 sm:mt-4 max-w-2xl mx-auto"
               variants={itemVariants}
             >
-              What Clients Will Say About Working with Me.
+              Explore my verified certificates and credentials in AI, Data
+              Science, and Full-Stack Development.
             </motion.p>
           </motion.div>
 
           <div className="relative">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {visibleTestimonials.map((testimonial) => (
+              {visibleCertificates.map((cert) => (
                 <motion.div
-                  key={testimonial.id}
+                  key={cert?.id || Math.random()}
                   className="bg-background/80 backdrop-blur-sm border rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all h-full flex flex-col group"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
                   <div className="flex flex-col h-full">
-                    <Quote className="h-6 w-6 sm:h-8 sm:w-8 text-primary/30 mb-3 sm:mb-4 group-hover:text-primary/50 transition-colors" />
-
-                    <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6 flex-1">
-                      &ldquo;{testimonial.content}&rdquo;
-                    </p>
-
+                    <Award className="h-6 w-6 sm:h-8 sm:w-8 text-primary/30 mb-3 sm:mb-4 group-hover:text-primary/50 transition-colors" />
+                    <div className="flex items-center gap-3 mb-4">
+                      {cert?.image && (
+                        <img
+                          src={cert.image}
+                          alt={cert.title}
+                          className="h-12 w-12 rounded-md object-cover border border-primary/20"
+                          loading="lazy"
+                        />
+                      )}
+                      <div>
+                        <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
+                          {cert?.title || ""}
+                        </h3>
+                        <p className="text-xs text-muted-foreground">
+                          {cert?.issuer || ""} &bull; {cert?.date || ""}
+                        </p>
+                      </div>
+                    </div>
                     <div className="mt-auto">
-                      <div className="flex mb-2">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-4 w-4 sm:h-5 sm:w-5 ${
-                              i < testimonial.rating
-                                ? "text-yellow-400 fill-yellow-400"
-                                : "text-muted-foreground/30"
-                            }`}
-                          />
-                        ))}
-                      </div>
-
-                      <div className="flex items-center gap-3 sm:gap-4 mt-3 sm:mt-4">
-                        <div className="relative h-10 w-10 sm:h-12 sm:w-12 rounded-full border-2 border-primary/20 group-hover:border-primary/50 overflow-hidden transition-all">
-                          {testimonial.image ? (
-                            <img
-                              src={testimonial.image}
-                              alt={testimonial.name}
-                              className="w-full h-full object-cover"
-                              loading="lazy"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-primary/10 flex items-center justify-center text-primary/50">
-                              {testimonial.name.charAt(0)}
-                            </div>
-                          )}
-                        </div>
-                        <div>
-                          <p className="font-medium text-sm sm:text-base">
-                            {testimonial.name}
-                          </p>
-                          <p className="text-xs sm:text-sm text-muted-foreground">
-                            {testimonial.role}
-                          </p>
-                        </div>
-                      </div>
+                      {cert?.url && (
+                        <a
+                          href={cert.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block mt-2 px-4 py-2 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+                        >
+                          View Certificate
+                        </a>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -233,17 +219,17 @@ export const TestimonialSection = () => {
             {totalPages > 1 && (
               <>
                 <button
-                  onClick={prevTestimonial}
+                  onClick={prevCertificate}
                   className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 p-2 sm:p-3 rounded-full border border-muted-foreground/20 hover:border-primary/50 bg-background/80 backdrop-blur-sm transition-all shadow-lg z-10 hidden sm:flex items-center justify-center hover:scale-110"
-                  aria-label="Previous testimonial"
+                  aria-label="Previous certificate"
                 >
                   <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
                 </button>
 
                 <button
-                  onClick={nextTestimonial}
+                  onClick={nextCertificate}
                   className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 p-2 sm:p-3 rounded-full border border-muted-foreground/20 hover:border-primary/50 bg-background/80 backdrop-blur-sm transition-all shadow-lg z-10 hidden sm:flex items-center justify-center hover:scale-110"
-                  aria-label="Next testimonial"
+                  aria-label="Next certificate"
                 >
                   <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
                 </button>
@@ -255,9 +241,9 @@ export const TestimonialSection = () => {
           {totalPages > 1 && (
             <div className="flex justify-center gap-3 sm:gap-4 sm:hidden">
               <button
-                onClick={prevTestimonial}
+                onClick={prevCertificate}
                 className="p-1 sm:p-2 rounded-full border border-muted-foreground/20 hover:border-primary/50 bg-background/80 backdrop-blur-sm transition-all hover:scale-110"
-                aria-label="Previous testimonial"
+                aria-label="Previous certificate"
               >
                 <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
@@ -272,17 +258,17 @@ export const TestimonialSection = () => {
                         ? "bg-primary"
                         : "bg-muted-foreground/20"
                     }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
+                    aria-label={`Go to certificate page ${index + 1}`}
                   />
                 ))}
               </div>
 
               <button
-                onClick={nextTestimonial}
+                onClick={nextCertificate}
                 className="p-1 sm:p-2 rounded-full border border-muted-foreground/20 hover:border-primary/50 bg-background/80 backdrop-blur-sm transition-all hover:scale-110"
-                aria-label="Next testimonial"
+                aria-label="Next certificate"
               >
-                <ChevronRight className="h-4 w-4 sm:h-5 sm:h-5" />
+                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
             </div>
           )}

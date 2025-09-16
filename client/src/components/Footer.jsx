@@ -1,10 +1,4 @@
-import {
-  ArrowUp,
-  Linkedin,
-  Github,
-  Mail,
-  Phone,
-} from "lucide-react";
+import { ArrowUp, Linkedin, Github, Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Footer = () => {

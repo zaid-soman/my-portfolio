@@ -507,8 +507,8 @@ export const ProjectsSection = () => {
               Have a project in mind?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Let&apos;s collaborate to bring your vision to life with cutting-edge
-              technology and exceptional design.
+              Let&apos;s collaborate to bring your vision to life with
+              cutting-edge technology and exceptional design.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <motion.a
