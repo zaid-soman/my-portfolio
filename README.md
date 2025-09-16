@@ -1,6 +1,6 @@
 # 💼 Developer Portfolio – React + Vite + Tailwind
-## ⭐ Star this repo if you like it!
 
+## ⭐ Star this repo if you like it!
 
 A fast, modern, and responsive developer portfolio website built using **React**, **Vite**, and **Tailwind CSS**. Designed to showcase your projects, skills, and contact information in a clean, professional format.
 
@@ -13,11 +13,13 @@ A fast, modern, and responsive developer portfolio website built using **React**
 
 ## 📸 Screenshots
 
-### 🏠 Home Page  
+### 🏠 Home Page
+
 ![Home Page](sampleimage/sample1.png)
 ![Home Page](sampleimage/sample2.png)
 
-### 🧰 other section  
+### 🧰 other section
+
 ![Section](sampleimage/sample3.png)
 ![Section](sampleimage/sample4.png)
 ![Section](sampleimage/sample5.png)
@@ -35,10 +37,11 @@ A fast, modern, and responsive developer portfolio website built using **React**
 ## 🛠️ Getting Started
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-username/react-vite-portfolio.git
    cd react-vite-portfolio
-   ````
+   ```
 
 2. **Install dependencies**
 
@@ -54,9 +57,9 @@ A fast, modern, and responsive developer portfolio website built using **React**
 
 4. **Customize your content**
 
-   * Update `/src/data/projects.js` with your projects
-   * Update `/src/data/skills.js` with your tech stack
-   * Modify `/src/components` and `/src/pages` for layout or section changes
+   - Update `/src/data/projects.js` with your projects
+   - Update `/src/data/skills.js` with your tech stack
+   - Modify `/src/components` and `/src/pages` for layout or section changes
 
 ## 🏗️ Build for Production
 
@@ -68,9 +71,9 @@ npm run build
 
 You can deploy the site using platforms like:
 
-* [Vercel](https://vercel.com/)
-* [Netlify](https://www.netlify.com/)
-* [GitHub Pages](https://pages.github.com/) (with additional config)
+- [Vercel](https://vercel.com/)
+- [Netlify](https://www.netlify.com/)
+- [GitHub Pages](https://pages.github.com/) (with additional config)
 
 ## 📬 Contact
 
@@ -82,3 +85,4 @@ Feel free to connect with me through the Contact section on the site or via [Lin
 
 ```
 
+```

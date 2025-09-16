@@ -13,9 +13,9 @@ export const HeroSection = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const itemVariants = {
@@ -25,9 +25,9 @@ export const HeroSection = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
   };
 
   const floatingVariants = {
@@ -36,9 +36,9 @@ export const HeroSection = () => {
       transition: {
         duration: 6,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
@@ -54,10 +54,10 @@ export const HeroSection = () => {
             key={i}
             className="absolute rounded-full bg-primary/10"
             style={{
-              width: Math.random() * 10 + 2 + 'px',
-              height: Math.random() * 10 + 2 + 'px',
-              left: Math.random() * 100 + '%',
-              top: Math.random() * 100 + '%',
+              width: Math.random() * 10 + 2 + "px",
+              height: Math.random() * 10 + 2 + "px",
+              left: Math.random() * 100 + "%",
+              top: Math.random() * 100 + "%",
             }}
             animate={{
               y: [0, (Math.random() - 0.5) * 100],
@@ -67,8 +67,8 @@ export const HeroSection = () => {
             transition={{
               duration: Math.random() * 10 + 10,
               repeat: Infinity,
-              repeatType: 'reverse',
-              ease: 'linear'
+              repeatType: "reverse",
+              ease: "linear",
             }}
           />
         ))}
@@ -82,7 +82,7 @@ export const HeroSection = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants}>
-            <motion.div 
+            <motion.div
               className="text-lg md:text-xl font-mono text-primary mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -93,39 +93,46 @@ export const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
             variants={itemVariants}
           >
             <span className="inline-block">I&apos;m</span>
-            <motion.span 
+            <motion.span
               className="text-primary inline-block ml-3 relative"
               variants={itemVariants}
             >
               Zaid Soman
-              <motion.span 
+              <motion.span
                 className="absolute -bottom-2 left-0 h-1 bg-primary w-full"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
               />
             </motion.span>
-
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             className="text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light"
             variants={itemVariants}
           >
-            Crafting <span className="text-primary font-medium">digital experiences</span> that blend beautiful design with <span className="text-secondary font-medium">cutting-edge technology</span> to solve real-world problems.
+            Crafting{" "}
+            <span className="text-primary font-medium">
+              digital experiences
+            </span>{" "}
+            that blend beautiful design with{" "}
+            <span className="text-secondary font-medium">
+              cutting-edge technology
+            </span>{" "}
+            to solve real-world problems.
           </motion.p>
 
-          <motion.div 
+          <motion.div
             className="pt-8 flex flex-col sm:flex-row justify-center gap-6"
             variants={itemVariants}
           >
-            <motion.a 
-              href="#projects" 
+            <motion.a
+              href="#projects"
               className="relative cosmic-button group overflow-hidden px-8 py-4 rounded-full font-medium text-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -136,17 +143,28 @@ export const HeroSection = () => {
               <span className="relative z-10">Explore My Work</span>
               <span className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-100 group-hover:opacity-90 transition-opacity duration-300"></span>
             </motion.a>
-            
-            <motion.a 
-              href="#contact" 
+
+            <motion.a
+              href="#contact"
               className="relative outline-button group overflow-hidden px-8 py-4 rounded-full font-medium text-lg border-2 border-primary/50 hover:border-primary transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative z-10 flex items-center gap-2">
-                Let's Connect 
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                Let's Connect
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                >
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                 </svg>
               </span>
               <span className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors duration-300"></span>
@@ -156,46 +174,50 @@ export const HeroSection = () => {
       </div>
 
       {/* Tech stack floating badges */}
-      <motion.div 
+      <motion.div
         className="absolute left-8 bottom-1/3 hidden lg:flex flex-col gap-4 items-start"
         variants={floatingVariants}
         animate="float"
       >
-        {['React', 'Node.js', 'TypeScript', 'Java', 'MongoDB'].map((tech, i) => (
-          <motion.div 
-            key={tech}
-            className="px-4 py-2 bg-background/80 backdrop-blur-sm border rounded-full text-sm shadow-sm"
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 1 + i * 0.1 }}
-          >
-            {tech}
-          </motion.div>
-        ))}
+        {["React", "Node.js", "TypeScript", "Java", "MongoDB"].map(
+          (tech, i) => (
+            <motion.div
+              key={tech}
+              className="px-4 py-2 bg-background/80 backdrop-blur-sm border rounded-full text-sm shadow-sm"
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1 + i * 0.1 }}
+            >
+              {tech}
+            </motion.div>
+          )
+        )}
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="absolute right-8 top-1/3 hidden lg:flex flex-col gap-4 items-end"
         variants={floatingVariants}
         animate="float"
       >
-        {['Express', 'Next.js', 'PostgreSQL', 'Tailwind', 'Docker'].map((tech, i) => (
-          <motion.div 
-            key={tech}
-            className="px-4 py-2 bg-background/80 backdrop-blur-sm border rounded-full text-sm shadow-sm"
-            initial={{ x: 20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 1.2 + i * 0.1 }}
-          >
-            {tech}
-          </motion.div>
-        ))}
+        {["Express", "Next.js", "PostgreSQL", "Tailwind", "Docker"].map(
+          (tech, i) => (
+            <motion.div
+              key={tech}
+              className="px-4 py-2 bg-background/80 backdrop-blur-sm border rounded-full text-sm shadow-sm"
+              initial={{ x: 20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.2 + i * 0.1 }}
+            >
+              {tech}
+            </motion.div>
+          )
+        )}
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
         initial={{ opacity: 0, y: 20 }}
-        animate={{ 
+        animate={{
           opacity: [0, 1, 1, 0],
           y: [0, 10, 0, -10],
         }}
@@ -203,7 +225,7 @@ export const HeroSection = () => {
           duration: 2.5,
           repeat: Infinity,
           repeatDelay: 0.5,
-          ease: "easeInOut"
+          ease: "easeInOut",
         }}
       >
         <span className="text-sm text-muted-foreground mb-2 flex items-center gap-1">
@@ -213,13 +235,13 @@ export const HeroSection = () => {
       </motion.div>
 
       {/* Animated gradient background elements */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 -z-10 overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.15 }}
         transition={{ delay: 1, duration: 1.5 }}
       >
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-primary to-purple-500 blur-[100px] opacity-30"
           animate={{
             x: [0, 20, 0],
@@ -228,11 +250,11 @@ export const HeroSection = () => {
           transition={{
             duration: 15,
             repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut'
+            repeatType: "reverse",
+            ease: "easeInOut",
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-gradient-to-r from-secondary to-pink-500 blur-[120px] opacity-30"
           animate={{
             x: [0, -30, 0],
@@ -241,11 +263,11 @@ export const HeroSection = () => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut'
+            repeatType: "reverse",
+            ease: "easeInOut",
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-1/4 left-1/2 w-60 h-60 rounded-full bg-gradient-to-r from-accent to-blue-500 blur-[90px] opacity-30"
           animate={{
             x: [0, 25, 0],
@@ -254,8 +276,8 @@ export const HeroSection = () => {
           transition={{
             duration: 18,
             repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut'
+            repeatType: "reverse",
+            ease: "easeInOut",
           }}
         />
       </motion.div>
