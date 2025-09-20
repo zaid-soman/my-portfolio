@@ -271,7 +271,7 @@ export const SkillsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white tracking-tight antialiased">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight antialiased">
             Technical
             <span
               className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
@@ -281,7 +281,7 @@ export const SkillsSection = () => {
               Expertise
             </span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed antialiased">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed antialiased">
             Technologies I&apos;ve mastered and my proficiency levels across
             different domains
           </p>
@@ -303,9 +303,9 @@ export const SkillsSection = () => {
                          transition-all duration-300 backdrop-blur-xl overflow-hidden
                          ${
                            activeCategory === category.id
-                             ? `text-white border border-white/30 bg-black/40 shadow-2xl`
-                             : `text-gray-400 border border-white/10 bg-black/20 hover:text-white 
-                              hover:border-white/20 hover:bg-black/30`
+                             ? `text-foreground border border-border bg-background/60 shadow-2xl`
+                             : `text-muted-foreground border border-border/50 bg-background/40 hover:text-foreground 
+                              hover:border-border hover:bg-background/60`
                          }`}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
@@ -354,15 +354,15 @@ export const SkillsSection = () => {
                       delay: index * 0.05,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="group relative p-6 bg-black/30 border border-white/20 rounded-2xl 
+                    className="group relative p-6 bg-background/60 border border-border rounded-2xl 
                              backdrop-blur-xl transition-all duration-500 ease-out
-                             hover:bg-black/40 hover:border-blue-500/30 hover:shadow-2xl 
+                             hover:bg-background/80 hover:border-blue-500/30 hover:shadow-2xl 
                              hover:shadow-blue-500/10 hover:-translate-y-2"
                     whileHover={{ scale: 1.02 }}
                   >
                     <div className="flex items-start gap-4 mb-4">
                       <motion.div
-                        className="w-14 h-14 rounded-xl bg-black/40 border border-white/20 
+                        className="w-14 h-14 rounded-xl bg-background/80 border border-border 
                                  flex items-center justify-center group-hover:border-blue-500/50 
                                  transition-all duration-300"
                         whileHover={{ rotate: 12, scale: 1.1 }}
@@ -377,7 +377,7 @@ export const SkillsSection = () => {
                       <div className="flex-1">
                         <div className="flex justify-between items-center mb-3">
                           <h3
-                            className="font-bold text-lg text-white group-hover:text-blue-400 
+                            className="font-bold text-lg text-foreground group-hover:text-blue-400 
                                        transition-colors duration-300 tracking-tight"
                           >
                             {skill.name}
@@ -399,7 +399,7 @@ export const SkillsSection = () => {
                           </motion.span>
                         </div>
                         <SkillBar level={skill.level} />
-                        <div className="mt-3 flex justify-between text-xs text-gray-500 font-medium">
+                        <div className="mt-3 flex justify-between text-xs text-muted-foreground font-medium">
                           <span>Beginner</span>
                           <span>Intermediate</span>
                           <span>Expert</span>
@@ -421,7 +421,7 @@ export const SkillsSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-gray-400 text-lg">
+            <p className="text-muted-foreground text-lg">
               No skills found in this category
             </p>
           </motion.div>

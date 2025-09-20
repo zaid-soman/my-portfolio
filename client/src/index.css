@@ -184,36 +184,37 @@
 
 @layer base {
   :root {
-    /* Enhanced Color Palette */
-    --background: 220 30% 98%;
-    --foreground: 222 47% 11%;
+    /* Enhanced Color Palette - Eye-friendly Light Theme */
+    --background: 220 15% 92%;
+    --foreground: 222 47% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 220 20% 96%;
+    --card-foreground: 222 47% 15%;
 
     --primary: 250 50% 62%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 25% 88%;
+    --secondary-foreground: 222.2 47.4% 15%;
 
-    --accent: 250 45% 95%;
-    --accent-foreground: 250 50% 20%;
+    --accent: 220 20% 90%;
+    --accent: 220 20% 90%;
+    --accent-foreground: 250 50% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 25% 88%;
+    --muted-foreground: 215.4 20% 45%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 20% 96%;
+    --popover-foreground: 222.2 84% 10%;
 
-    --border: 214 32% 91%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 220 25% 82%;
+    --input: 220 25% 85%;
     --ring: 250 50% 62%;
 
-    /* Glassmorphism Variables */
-    --glass-bg: rgba(255, 255, 255, 0.15);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --glass-shadow: rgba(31, 38, 135, 0.15);
+    /* Light Theme Glassmorphism - Better for eyes */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
   }
 
   .dark {

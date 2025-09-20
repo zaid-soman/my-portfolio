@@ -109,45 +109,47 @@ export const AboutSection = () => {
                     Personal Profile
                   </h3>
                   <p className="text-xs sm:text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground/80 font-medium">
-                    Computer Science • AI/ML Specialist • Full-Stack Developer
+                    Data Science & AI Graduate • Full-Stack Developer • ML
+                    Engineer
                   </p>
                 </div>
               </div>
 
               <div className="space-y-3 sm:space-y-4 md:space-y-6">
                 <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/80 font-medium tracking-wide">
-                  Computer Science student specializing in Artificial
-                  Intelligence and Machine Learning with hands-on experience in
-                  full-stack development. Skilled in Python, React, Node.js, and
-                  modern AI frameworks with proven experience in building
-                  intelligent systems, web applications, and data-driven
-                  solutions. Passionate about creating innovative technology
-                  that solves real-world problems.
+                  Recent Data Science and AI graduate with proven expertise in
+                  machine learning, full-stack development, and data-driven
+                  problem-solving. Experienced in building intelligent systems
+                  using React, Node.js, PostgreSQL, and Python. Successfully
+                  delivered projects including NLP-powered search engines and
+                  AI-enhanced project management systems. Passionate about
+                  applying AI and data science to create innovative solutions
+                  that drive real-world impact.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                   <div className="bg-background p-3 sm:p-4 rounded-lg border border-muted transition-all duration-300 hover:border-primary/50 hover:shadow-md hover:scale-[1.02]">
                     <h4 className="text-sm sm:text-base font-semibold text-primary transition-colors duration-300 hover:text-primary/80">
-                      AI/ML
+                      AI/ML & Data Science
                     </h4>
                     <p className="text-xs sm:text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground/80">
-                      Python, TensorFlow, PyTorch
+                      Python, TensorFlow, NLP, Predictive Analytics
                     </p>
                   </div>
                   <div className="bg-background p-3 sm:p-4 rounded-lg border border-muted transition-all duration-300 hover:border-primary/50 hover:shadow-md hover:scale-[1.02]">
                     <h4 className="text-sm sm:text-base font-semibold text-primary transition-colors duration-300 hover:text-primary/80">
-                      Frontend
+                      Full-Stack Development
                     </h4>
                     <p className="text-xs sm:text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground/80">
-                      React, Next.js, TypeScript
+                      React, Node.js, PostgreSQL, REST APIs
                     </p>
                   </div>
                   <div className="bg-background p-3 sm:p-4 rounded-lg border border-muted transition-all duration-300 hover:border-primary/50 hover:shadow-md hover:scale-[1.02]">
                     <h4 className="text-sm sm:text-base font-semibold text-primary transition-colors duration-300 hover:text-primary/80">
-                      Backend
+                      UI/UX & Project Management
                     </h4>
                     <p className="text-xs sm:text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground/80">
-                      Node.js, Python, Databases
+                      Figma, Agile/Scrum, Clean Architecture
                     </p>
                   </div>
                 </div>
@@ -177,8 +179,8 @@ export const AboutSection = () => {
           <motion.div className="lg:w-1/2 space-y-6" variants={itemVariants}>
             {/* Development Philosophy */}
             <motion.div
-              className="group relative p-6 bg-black/30 border border-white/20 rounded-2xl backdrop-blur-xl 
-                         transition-all duration-500 ease-out hover:bg-black/40 hover:border-blue-500/30 
+              className="group relative p-6 bg-background/60 border border-border rounded-2xl backdrop-blur-xl 
+                         transition-all duration-500 ease-out hover:bg-background/80 hover:border-blue-500/30 
                          hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1"
               whileHover={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -194,19 +196,20 @@ export const AboutSection = () => {
                 </motion.div>
                 <div className="flex-1">
                   <h3
-                    className="text-xl font-bold mb-3 text-white tracking-tight 
+                    className="text-xl font-bold mb-3 text-foreground tracking-tight 
                                group-hover:text-blue-400 transition-colors duration-300"
                   >
                     Development Philosophy
                   </h3>
                   <p
-                    className="text-gray-300 leading-relaxed text-base group-hover:text-gray-200 
+                    className="text-muted-foreground leading-relaxed text-base group-hover:text-foreground/80 
                               transition-colors duration-300 antialiased"
                   >
-                    I believe in creating intelligent systems that combine
-                    robust AI/ML algorithms with clean, maintainable code. My
-                    approach emphasizes research-driven development, ethical AI
-                    practices, and scalable architectures.
+                    I believe in creating data-driven solutions that combine
+                    robust machine learning algorithms with intuitive user
+                    interfaces. My approach emphasizes clean code, scalable
+                    architecture, and agile methodologies to deliver innovative
+                    AI applications that solve real-world problems.
                   </p>
                 </div>
               </div>
@@ -214,8 +217,8 @@ export const AboutSection = () => {
 
             {/* Academic Focus */}
             <motion.div
-              className="group relative p-6 bg-black/30 border border-white/20 rounded-2xl backdrop-blur-xl 
-                         transition-all duration-500 ease-out hover:bg-black/40 hover:border-purple-500/30 
+              className="group relative p-6 bg-background/60 border border-border rounded-2xl backdrop-blur-xl 
+                         transition-all duration-500 ease-out hover:bg-background/80 hover:border-purple-500/30 
                          hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-1"
               whileHover={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -231,19 +234,21 @@ export const AboutSection = () => {
                 </motion.div>
                 <div className="flex-1">
                   <h3
-                    className="text-xl font-bold mb-3 text-white tracking-tight 
+                    className="text-xl font-bold mb-3 text-foreground tracking-tight 
                                group-hover:text-purple-400 transition-colors duration-300"
                   >
-                    Academic & Research Focus
+                    Academic & Professional Experience
                   </h3>
                   <p
-                    className="text-gray-300 leading-relaxed text-base group-hover:text-gray-200 
+                    className="text-muted-foreground leading-relaxed text-base group-hover:text-foreground/80 
                               transition-colors duration-300 antialiased"
                   >
-                    As a Computer Science student specializing in AI & Machine
-                    Learning, I focus on cutting-edge research in deep learning,
-                    natural language processing, and computer vision while
-                    building practical applications.
+                    Recent graduate with a Bachelor&apos;s in Data Science and
+                    AI from University of Al-Hussein Bin Talal. Specialized in
+                    machine learning algorithms for predictive analytics and
+                    delivered impactful projects including a functional search
+                    engine with NLP integration and an AI-enhanced Scrum project
+                    management system.
                   </p>
                 </div>
               </div>
@@ -252,9 +257,9 @@ export const AboutSection = () => {
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-4">
               <motion.div
-                className="group relative p-6 bg-black/30 border border-white/20 rounded-2xl 
+                className="group relative p-6 bg-background/60 border border-border rounded-2xl 
                            backdrop-blur-xl text-center transition-all duration-500 ease-out 
-                           hover:bg-black/40 hover:border-green-500/30 hover:shadow-2xl 
+                           hover:bg-background/80 hover:border-green-500/30 hover:shadow-2xl 
                            hover:shadow-green-500/10 hover:-translate-y-1"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -264,20 +269,20 @@ export const AboutSection = () => {
                            group-hover:text-green-300 transition-colors duration-300"
                   whileHover={{ scale: 1.1 }}
                 >
-                  15+
+                  10+
                 </motion.div>
                 <div
-                  className="text-gray-400 text-sm font-medium tracking-wider 
-                              group-hover:text-gray-300 transition-colors duration-300"
+                  className="text-muted-foreground text-sm font-medium tracking-wider 
+                              group-hover:text-foreground/80 transition-colors duration-300"
                 >
-                  PROJECTS COMPLETED
+                  PROJECTS DELIVERED
                 </div>
               </motion.div>
 
               <motion.div
-                className="group relative p-6 bg-black/30 border border-white/20 rounded-2xl 
+                className="group relative p-6 bg-background/60 border border-border rounded-2xl 
                            backdrop-blur-xl text-center transition-all duration-500 ease-out 
-                           hover:bg-black/40 hover:border-yellow-500/30 hover:shadow-2xl 
+                           hover:bg-background/80 hover:border-yellow-500/30 hover:shadow-2xl 
                            hover:shadow-yellow-500/10 hover:-translate-y-1"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -287,13 +292,13 @@ export const AboutSection = () => {
                            group-hover:text-yellow-300 transition-colors duration-300"
                   whileHover={{ scale: 1.1 }}
                 >
-                  100%
+                  2025
                 </motion.div>
                 <div
-                  className="text-gray-400 text-sm font-medium tracking-wider 
-                              group-hover:text-gray-300 transition-colors duration-300"
+                  className="text-muted-foreground text-sm font-medium tracking-wider 
+                              group-hover:text-foreground/80 transition-colors duration-300"
                 >
-                  CLIENT SATISFACTION
+                  GRADUATE
                 </div>
               </motion.div>
             </div>

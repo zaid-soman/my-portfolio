@@ -153,7 +153,7 @@ export const ProjectsSection = () => {
             <div className="w-16 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
           </motion.div>
 
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white tracking-tight antialiased">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight antialiased">
             Featured
             <span
               className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
@@ -164,7 +164,7 @@ export const ProjectsSection = () => {
             </span>
           </h2>
 
-          <p className="text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed antialiased">
+          <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed antialiased">
             Showcasing my expertise in AI/ML development, full-stack
             applications, and innovative solutions built with cutting-edge
             technologies.
@@ -239,9 +239,9 @@ export const ProjectsSection = () => {
                   delay: index * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group relative bg-black/30 border border-white/20 rounded-3xl 
+                className="group relative bg-background/60 border border-border rounded-3xl 
                          backdrop-blur-xl overflow-hidden transition-all duration-500 ease-out
-                         hover:bg-black/40 hover:border-blue-500/30 hover:shadow-2xl 
+                         hover:bg-background/80 hover:border-blue-500/30 hover:shadow-2xl 
                          hover:shadow-blue-500/10 hover:-translate-y-2"
                 whileHover={{ scale: 1.02 }}
               >
@@ -273,7 +273,7 @@ export const ProjectsSection = () => {
                                 flex items-end p-6"
                   >
                     <motion.p
-                      className="text-white text-sm leading-relaxed translate-y-6 
+                      className="text-foreground text-sm leading-relaxed translate-y-6 
                                group-hover:translate-y-0 transition-transform duration-500"
                     >
                       {project.description}
@@ -292,7 +292,7 @@ export const ProjectsSection = () => {
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <h3
-                      className="text-xl font-bold text-white group-hover:text-blue-400 
+                      className="text-xl font-bold text-foreground group-hover:text-blue-400 
                                  transition-colors duration-300 tracking-tight"
                     >
                       {project.title}
@@ -315,7 +315,7 @@ export const ProjectsSection = () => {
                             tag.includes("development") ||
                             tag.includes("Coming")
                               ? "bg-orange-500/20 text-orange-400 border border-orange-500/30"
-                              : "bg-gray-700/50 text-gray-300 border border-gray-600/30 hover:border-blue-500/50 hover:text-blue-400"
+                              : "bg-muted/60 text-muted-foreground border border-muted hover:border-blue-500/50 hover:text-blue-400"
                           }`}
                         whileHover={{ scale: 1.05, y: -1 }}
                       >
@@ -325,7 +325,7 @@ export const ProjectsSection = () => {
                     {project.tags.length > 4 && (
                       <span
                         className="px-3 py-1 text-xs font-medium rounded-full 
-                                     bg-gray-700/30 text-gray-400 border border-gray-600/30"
+                                     bg-muted/40 text-muted-foreground border border-muted"
                       >
                         +{project.tags.length - 4} more
                       </span>
@@ -341,7 +341,7 @@ export const ProjectsSection = () => {
                       className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl 
                                 font-semibold text-sm transition-all duration-300 ${
                                   project.demoUrl === "#"
-                                    ? "bg-gray-700/30 text-gray-500 cursor-not-allowed border border-gray-600/30"
+                                    ? "bg-muted/40 text-muted-foreground cursor-not-allowed border border-muted"
                                     : "bg-blue-500/20 text-blue-400 border border-blue-500/30 hover:bg-blue-500/30 hover:text-blue-300"
                                 }`}
                       onClick={(e) =>
@@ -363,7 +363,7 @@ export const ProjectsSection = () => {
                       className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl 
                                 font-semibold text-sm transition-all duration-300 ${
                                   project.githubUrl === "#"
-                                    ? "bg-gray-700/30 text-gray-500 cursor-not-allowed border border-gray-600/30"
+                                    ? "bg-muted/40 text-muted-foreground cursor-not-allowed border border-muted"
                                     : "bg-purple-500/20 text-purple-400 border border-purple-500/30 hover:bg-purple-500/30 hover:text-purple-300"
                                 }`}
                       onClick={(e) =>
@@ -440,10 +440,10 @@ export const ProjectsSection = () => {
                           rounded-3xl"
             ></div>
             <div className="relative z-10">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white tracking-tight">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground tracking-tight">
                 Have a project in mind?
               </h3>
-              <p className="text-gray-400 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
                 Let&apos;s collaborate to bring your vision to life with
                 cutting-edge technology and exceptional design.
               </p>

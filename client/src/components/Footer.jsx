@@ -64,7 +64,7 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto">
         {/* Main Footer */}
         <motion.div
-          className="p-8 bg-black/30 border border-white/20 rounded-3xl backdrop-blur-xl"
+          className="p-8 bg-background/60 border border-border rounded-3xl backdrop-blur-xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -74,10 +74,10 @@ export const Footer = () => {
             {/* Branding */}
             <motion.div variants={itemVariants} className="space-y-6">
               <div>
-                <h3 className="text-2xl font-bold text-white tracking-tight mb-3">
+                <h3 className="text-2xl font-bold text-foreground tracking-tight mb-3">
                   ZAID SOMAN
                 </h3>
-                <p className="text-gray-400 leading-relaxed antialiased">
+                <p className="text-muted-foreground leading-relaxed antialiased">
                   AI/ML Engineer & Full-Stack Developer creating innovative
                   solutions with cutting-edge technology.
                 </p>
@@ -90,8 +90,8 @@ export const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="p-3 rounded-xl bg-black/30 border border-white/10 text-gray-400 
-                             hover:text-white hover:border-blue-500/30 hover:bg-black/40 
+                    className="p-3 rounded-xl bg-background/60 border border-border text-muted-foreground 
+                             hover:text-foreground hover:border-blue-500/30 hover:bg-background/80 
                              transition-all duration-300"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
@@ -104,7 +104,7 @@ export const Footer = () => {
 
             {/* Navigation */}
             <motion.div variants={itemVariants}>
-              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-[0.2em]">
+              <h4 className="text-foreground font-bold mb-6 text-sm uppercase tracking-[0.2em]">
                 Navigation
               </h4>
               <ul className="space-y-4">
@@ -116,7 +116,7 @@ export const Footer = () => {
                   >
                     <a
                       href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-300 
+                      className="text-muted-foreground hover:text-foreground transition-colors duration-300 
                                font-medium tracking-wide"
                     >
                       {link.name}
@@ -128,7 +128,7 @@ export const Footer = () => {
 
             {/* Contact */}
             <motion.div variants={itemVariants}>
-              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-[0.2em]">
+              <h4 className="text-foreground font-bold mb-6 text-sm uppercase tracking-[0.2em]">
                 Contact
               </h4>
               <ul className="space-y-4">
@@ -138,17 +138,17 @@ export const Footer = () => {
                     className="flex items-center space-x-3"
                     whileHover={{ scale: 1.02, x: 2 }}
                   >
-                    <span className="text-gray-400">{info.icon}</span>
+                    <span className="text-muted-foreground">{info.icon}</span>
                     {info.href ? (
                       <a
                         href={info.href}
-                        className="text-gray-400 hover:text-white transition-colors duration-300 
+                        className="text-muted-foreground hover:text-foreground transition-colors duration-300 
                                  font-medium tracking-wide"
                       >
                         {info.text}
                       </a>
                     ) : (
-                      <span className="text-gray-400 font-medium tracking-wide">
+                      <span className="text-muted-foreground font-medium tracking-wide">
                         {info.text}
                       </span>
                     )}
@@ -159,19 +159,19 @@ export const Footer = () => {
 
             {/* Newsletter */}
             <motion.div variants={itemVariants} className="space-y-6">
-              <h4 className="text-white font-bold text-sm uppercase tracking-[0.2em]">
+              <h4 className="text-foreground font-bold text-sm uppercase tracking-[0.2em]">
                 Stay Updated
               </h4>
-              <p className="text-gray-400 leading-relaxed antialiased">
+              <p className="text-muted-foreground leading-relaxed antialiased">
                 Get notified about my latest projects and AI/ML insights.
               </p>
               <form className="space-y-3">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full px-4 py-3 rounded-2xl bg-black/40 border border-white/20 
-                           text-white placeholder-gray-500 backdrop-blur-sm
-                           focus:outline-none focus:border-blue-500/50 focus:bg-black/50 
+                  className="w-full px-4 py-3 rounded-2xl bg-background/60 border border-border 
+                           text-foreground placeholder-muted-foreground backdrop-blur-sm
+                           focus:outline-none focus:border-blue-500/50 focus:bg-background/80 
                            transition-all duration-300"
                   required
                 />
@@ -191,7 +191,7 @@ export const Footer = () => {
 
           {/* Bottom bar */}
           <motion.div
-            className="mt-12 pt-8 border-t border-white/10 flex flex-col items-center 
+            className="mt-12 pt-8 border-t border-border flex flex-col items-center 
                      space-y-4 sm:space-y-0 sm:flex-row sm:justify-between"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -199,7 +199,7 @@ export const Footer = () => {
             viewport={{ once: true }}
           >
             <div>
-              <p className="text-gray-400 font-medium tracking-wide">
+              <p className="text-muted-foreground font-medium tracking-wide">
                 © {currentYear} Zaid Soman. All rights reserved.
               </p>
             </div>
@@ -207,14 +207,14 @@ export const Footer = () => {
             <div className="flex items-center space-x-6">
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors duration-300 
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 
                          font-medium tracking-wide"
               >
                 Privacy
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors duration-300 
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 
                          font-medium tracking-wide"
               >
                 Terms
