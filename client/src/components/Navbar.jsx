@@ -27,11 +27,14 @@ const navItems = [
 ];
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     const stored = localStorage.getItem("theme");
-    if (stored === "dark") {
+    if (stored === "light") {
+      document.documentElement.classList.remove("dark");
+      setTheme("light");
+    } else {
       document.documentElement.classList.add("dark");
       setTheme("dark");
     }
@@ -45,9 +48,13 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button
+    <motion.button
       onClick={toggleTheme}
-      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800"
+      className="p-3 rounded-xl bg-black/30 border border-white/20 text-gray-400 
+               hover:text-white hover:border-white/30 hover:bg-black/40 
+               backdrop-blur-xl transition-all duration-300"
+      whileHover={{ scale: 1.05, y: -1 }}
+      whileTap={{ scale: 0.98 }}
       title="Toggle theme"
       aria-label="Toggle theme"
     >
@@ -56,7 +63,7 @@ const ThemeToggle = () => {
       ) : (
         <Moon className="w-5 h-5" />
       )}
-    </button>
+    </motion.button>
   );
 };
 
@@ -143,23 +150,20 @@ export const Navbar = () => {
     <>
       {/* Top Right Buttons */}
       <motion.div
-        className="fixed top-4 right-4 z-50 flex gap-2"
+        className="fixed top-6 right-6 z-50 flex gap-3"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* GitHub Button */}
+        {/* Social Links */}
         <motion.a
           href="https://github.com/zaid-soman"
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            "p-2 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md",
-            "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50",
-            "border border-gray-200 dark:border-gray-700 shadow-sm",
-            "flex items-center justify-center"
-          )}
-          whileHover={{ scale: 1.05 }}
+          className="p-3 rounded-xl bg-black/30 border border-white/20 text-gray-400 
+                   hover:text-white hover:border-purple-500/30 hover:bg-black/40 
+                   backdrop-blur-xl transition-all duration-300"
+          whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           title="GitHub Profile"
           aria-label="GitHub Profile"
@@ -167,18 +171,14 @@ export const Navbar = () => {
           <Github className="w-5 h-5" />
         </motion.a>
 
-        {/* LinkedIn Button */}
         <motion.a
           href="https://www.linkedin.com/in/zaid-soman/"
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            "p-2 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md",
-            "text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/50",
-            "border border-gray-200 dark:border-gray-700 shadow-sm",
-            "flex items-center justify-center"
-          )}
-          whileHover={{ scale: 1.05 }}
+          className="p-3 rounded-xl bg-black/30 border border-white/20 text-blue-400 
+                   hover:text-blue-300 hover:border-blue-500/30 hover:bg-black/40 
+                   backdrop-blur-xl transition-all duration-300"
+          whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           title="LinkedIn Profile"
           aria-label="LinkedIn Profile"
@@ -186,18 +186,14 @@ export const Navbar = () => {
           <Linkedin className="w-5 h-5" />
         </motion.a>
 
-        {/* Twitter Button (replaces YouTube) */}
         <motion.a
           href="https://twitter.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            "p-2 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md",
-            "text-sky-600 hover:bg-sky-100 dark:hover:bg-sky-900/50",
-            "border border-gray-200 dark:border-gray-700 shadow-sm",
-            "flex items-center justify-center"
-          )}
-          whileHover={{ scale: 1.05 }}
+          className="p-3 rounded-xl bg-black/30 border border-white/20 text-cyan-400 
+                   hover:text-cyan-300 hover:border-cyan-500/30 hover:bg-black/40 
+                   backdrop-blur-xl transition-all duration-300"
+          whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           title="Twitter Profile"
           aria-label="Twitter Profile"
@@ -210,13 +206,15 @@ export const Navbar = () => {
           onClick={toggleMusic}
           disabled={!isAudioReady}
           className={cn(
-            "p-2 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md",
-            "text-primary hover:bg-primary/10 dark:hover:bg-primary/20",
-            "border border-gray-200 dark:border-gray-700 shadow-sm",
-            "flex items-center justify-center",
-            !isAudioReady && "opacity-50 cursor-not-allowed"
+            "p-3 rounded-xl bg-black/30 border border-white/20 backdrop-blur-xl transition-all duration-300",
+            isAudioReady
+              ? "text-green-400 hover:text-green-300 hover:border-green-500/30 hover:bg-black/40"
+              : "text-gray-600 cursor-not-allowed"
           )}
-          whileHover={{ scale: isAudioReady ? 1.05 : 1 }}
+          whileHover={{
+            scale: isAudioReady ? 1.05 : 1,
+            y: isAudioReady ? -2 : 0,
+          }}
           whileTap={{ scale: isAudioReady ? 0.95 : 1 }}
           title={
             isAudioReady
@@ -244,36 +242,65 @@ export const Navbar = () => {
       {/* Bottom Navbar */}
       <motion.div
         className={cn(
-          "fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50",
-          "transition-transform duration-300 ease-in-out",
-          showNavbar ? "translate-y-0" : "translate-y-full"
+          "fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50",
+          "transition-all duration-500 ease-out",
+          showNavbar
+            ? "translate-y-0 opacity-100"
+            : "translate-y-full opacity-0"
         )}
-        style={{ willChange: "transform" }}
-        initial={{ y: 20, opacity: 0 }}
+        initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="flex items-center justify-center bg-white/80 dark:bg-black/80 backdrop-blur-md rounded-full shadow-lg p-2 border border-gray-200 dark:border-gray-700">
+        <div
+          className="flex items-center justify-center bg-black/30 border border-white/20 
+                      backdrop-blur-xl rounded-3xl p-2 shadow-2xl"
+        >
           <div className="flex space-x-1 items-center">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "p-2 rounded-full transition-colors flex flex-col items-center",
-                  activeSection === item.href
-                    ? "bg-primary text-white"
-                    : "text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary"
-                )}
-                aria-label={item.name}
-              >
-                <item.icon className="w-5 h-5" />
-                <span className="text-xs mt-1 hidden md:block">
-                  {item.name}
-                </span>
-              </a>
-            ))}
-            <div className="flex items-center px-2">
+            {navItems.map((item, index) => {
+              const isActive = activeSection === item.href;
+              return (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "relative p-3 rounded-2xl transition-all duration-300 flex flex-col items-center group",
+                    isActive
+                      ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
+                      : "text-gray-400 hover:text-white hover:bg-white/10"
+                  )}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: index * 0.05,
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  }}
+                  aria-label={item.name}
+                >
+                  <item.icon className="w-5 h-5" />
+                  <span className="text-xs mt-1 font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {item.name}
+                  </span>
+                  {isActive && (
+                    <motion.div
+                      className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 
+                               bg-white rounded-full"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
+                </motion.a>
+              );
+            })}
+
+            {/* Theme Toggle in Navbar */}
+            <div className="ml-2 pl-2 border-l border-white/20">
               <ThemeToggle />
             </div>
           </div>

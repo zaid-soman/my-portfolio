@@ -1,48 +1,35 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Code, Brain, Rocket } from "lucide-react";
 
 const WelcomeScreen = ({ onWelcomeComplete }) => {
   const [phase, setPhase] = useState(0);
   const [exitAnimation, setExitAnimation] = useState(false);
   const [typedText, setTypedText] = useState("");
-  const { theme } = useTheme();
 
-  // Theme-based colors
-  const colors = {
-    light: {
-      primary: "hsl(222.2 47.4% 11.2%)",
-      secondary: "hsl(262.1 83.3% 57.8%)",
-      background: "hsl(0 0% 100%)",
-      muted: "hsl(215.4 16.3% 46.9%)",
-      link: "hsl(221.2 83.2% 53.3%)",
-    },
-    dark: {
-      primary: "hsl(210 40% 98%)",
-      secondary: "hsl(263.4 70% 50.4%)",
-      background: "hsl(222.2 47.4% 11.2%)",
-      muted: "hsl(215 20.2% 65.1%)",
-      link: "hsl(217.2 91.2% 59.8%)",
-    },
-  };
-
-  const currentColors = colors[theme] || colors.dark;
   const portfolioUrl = "zaidsoman.dev";
-  const welcomeMessages = [
-    "REACT DEVELOPER",
-    "DATA SCIENTIS",
-    "FULL STACK DEVELOPER",
+  const roles = [
+    { text: "AI/ML ENGINEER", icon: Brain, color: "from-blue-400 to-cyan-500" },
+    {
+      text: "FULL STACK DEVELOPER",
+      icon: Code,
+      color: "from-purple-400 to-pink-500",
+    },
+    {
+      text: "INNOVATION BUILDER",
+      icon: Rocket,
+      color: "from-green-400 to-emerald-500",
+    },
   ];
 
   useEffect(() => {
-    const phase1 = setTimeout(() => setPhase(1), 800);
-    const phase2 = setTimeout(() => setPhase(2), 1600);
-    const phase3 = setTimeout(() => setPhase(3), 2400);
+    const phase1 = setTimeout(() => setPhase(1), 600);
+    const phase2 = setTimeout(() => setPhase(2), 1400);
+    const phase3 = setTimeout(() => setPhase(3), 2200);
     const complete = setTimeout(() => {
       setExitAnimation(true);
       setTimeout(onWelcomeComplete, 1000);
-    }, 5000);
+    }, 4500);
 
     return () => {
       clearTimeout(phase1);
@@ -62,7 +49,7 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
         } else {
           clearInterval(typingInterval);
         }
-      }, 40);
+      }, 80);
 
       return () => clearInterval(typingInterval);
     }
@@ -73,13 +60,14 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
       },
     },
     exit: {
-      y: "-100vh",
+      scale: 0.9,
       opacity: 0,
+      filter: "blur(10px)",
       transition: {
         duration: 1,
         ease: [0.16, 1, 0.3, 1],
@@ -88,10 +76,11 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
   };
 
   const contentVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 40, opacity: 0, scale: 0.9 },
     visible: {
       y: 0,
       opacity: 1,
+      scale: 1,
       transition: {
         duration: 0.8,
         ease: [0.16, 1, 0.3, 1],
@@ -99,184 +88,172 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
     },
   };
 
-  const underlineVariants = {
-    hidden: { scaleX: 0 },
-    visible: {
-      scaleX: 1,
-      transition: {
-        delay: 0.8,
-        duration: 0.6,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-  };
-
-  const cursorVariants = {
-    blinking: {
-      opacity: [0, 0, 1, 1],
-      transition: {
-        duration: 1,
-        repeat: Infinity,
-        repeatDelay: 0,
-      },
-    },
-  };
-
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
-      {/* Welcome Screen */}
+    <div className="fixed inset-0 z-50 overflow-hidden bg-black">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+
+        {/* Animated Orbs */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-3xl"
+          style={{
+            background: "linear-gradient(45deg, #3b82f6, #8b5cf6)",
+          }}
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl"
+          style={{
+            background: "linear-gradient(45deg, #ec4899, #f59e0b)",
+          }}
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 60, 0],
+            scale: [1, 0.8, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+
+      {/* Main Content */}
       <motion.div
-        className="h-full w-full flex items-center justify-center p-4"
-        style={{ backgroundColor: currentColors.background }}
+        className="h-full w-full flex items-center justify-center p-6"
         variants={containerVariants}
         initial="hidden"
         animate={exitAnimation ? "exit" : "visible"}
       >
-        {/* Animated background elements - scaled down for mobile */}
-        <motion.div className="absolute inset-0 -z-10 overflow-hidden opacity-20">
-          <motion.div
-            className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 rounded-full blur-[50px] md:blur-[100px]"
-            style={{
-              background: `linear-gradient(to right, ${currentColors.primary}, ${currentColors.secondary})`,
-            }}
-            animate={{
-              x: [0, 20, 0],
-              y: [0, -30, 0],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute top-1/3 right-1/4 w-36 h-36 md:w-72 md:h-72 rounded-full blur-[60px] md:blur-[120px]"
-            style={{
-              background: `linear-gradient(to right, ${currentColors.secondary}, #ec4899)`,
-            }}
-            animate={{
-              x: [0, -30, 0],
-              y: [0, 40, 0],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          />
-        </motion.div>
-
-        <div className="w-full max-w-2xl mx-auto text-center px-4">
-          <motion.div className="space-y-4 md:space-y-8">
-            {phase >= 0 && (
-              <motion.div variants={contentVariants}>
-                <motion.div
-                  className="text-sm md:text-lg lg:text-xl font-mono mb-2 md:mb-4 inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-2 rounded-full border"
-                  style={{
-                    color: currentColors.primary,
-                    backgroundColor:
-                      theme === "dark"
-                        ? "rgba(255, 255, 255, 0.05)"
-                        : "rgba(0, 0, 0, 0.05)",
-                    borderColor:
-                      theme === "dark"
-                        ? "rgba(255, 255, 255, 0.1)"
-                        : "rgba(0, 0, 0, 0.1)",
-                  }}
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                >
-                  <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-                  {welcomeMessages[phase % welcomeMessages.length]}
-                </motion.div>
-              </motion.div>
-            )}
-
-            {phase >= 1 && (
-              <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight"
-                style={{ color: currentColors.primary }}
-                variants={contentVariants}
+        <div className="w-full max-w-4xl mx-auto text-center space-y-8">
+          {/* Role Badge */}
+          {phase >= 0 && (
+            <motion.div
+              variants={contentVariants}
+              className="flex justify-center"
+            >
+              <motion.div
+                className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-black/40 border border-white/20 backdrop-blur-xl"
+                whileHover={{ scale: 1.05 }}
+                initial={{ rotateX: -90 }}
+                animate={{ rotateX: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <span className="inline-block">Hello</span>
-                <motion.span
-                  className="inline-block ml-2 sm:ml-3 relative"
-                  style={{ color: currentColors.secondary }}
-                  variants={contentVariants}
+                <motion.div
+                  className={`p-2 rounded-xl bg-gradient-to-r ${
+                    roles[phase % roles.length]?.color
+                  } bg-opacity-20`}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                 >
-                  There !
-                  <motion.span
-                    className="absolute -bottom-1 sm:-bottom-2 left-0 h-0.5 sm:h-1 w-full"
-                    style={{ backgroundColor: currentColors.secondary }}
-                    variants={underlineVariants}
+                  {(() => {
+                    const CurrentIcon = roles[phase % roles.length]?.icon;
+                    return CurrentIcon ? (
+                      <CurrentIcon className="h-5 w-5 text-white" />
+                    ) : null;
+                  })()}
+                </motion.div>
+                <span className="text-white font-bold tracking-[0.2em] text-sm md:text-base">
+                  {roles[phase % roles.length]?.text}
+                </span>
+              </motion.div>
+            </motion.div>
+          )}
+
+          {/* Main Greeting */}
+          {phase >= 1 && (
+            <motion.div variants={contentVariants}>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight">
+                <span className="text-white">Hello</span>
+                <motion.span
+                  className="ml-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent relative"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                  There!
+                  <motion.div
+                    className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
                   />
                 </motion.span>
-              </motion.h1>
-            )}
+              </h1>
+            </motion.div>
+          )}
 
-            {phase >= 2 && (
+          {/* URL and Description */}
+          {phase >= 2 && (
+            <motion.div variants={contentVariants} className="space-y-4">
               <motion.div
-                className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed font-light"
-                style={{ color: currentColors.muted }}
-                variants={contentVariants}
+                className="flex justify-center items-center gap-2 text-xl md:text-2xl font-mono"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
               >
-                <motion.div
-                  className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg font-mono flex justify-center items-center"
-                  style={{ color: currentColors.link }}
-                >
-                  {typedText}
-                  {phase >= 2 && (
-                    <motion.span
-                      className="ml-0.5 h-4 sm:h-5 md:h-6 w-0.5 sm:w-1 inline-block"
-                      style={{ backgroundColor: currentColors.link }}
-                      variants={cursorVariants}
-                      animate="blinking"
-                    />
-                  )}
-                </motion.div>
-                <motion.p
-                  className="mt-2 sm:mt-4 text-xs sm:text-sm md:text-base"
-                  style={{ color: currentColors.muted }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.5 }}
-                >
-                  (This is my portfolio website)
-                </motion.p>
-              </motion.div>
-            )}
-
-            {phase >= 3 && (
-              <motion.div
-                className="pt-4 sm:pt-6 md:pt-8"
-                variants={contentVariants}
-              >
-                <motion.div
-                  className="h-1 sm:h-2 w-16 sm:w-20 rounded-full mx-auto"
-                  style={{ backgroundColor: currentColors.secondary + "80" }}
-                  animate={{
-                    scaleX: [1, 1.5, 1],
-                    opacity: [1, 0.7, 1],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                  }}
+                <span className="text-blue-400">{typedText}</span>
+                <motion.span
+                  className="w-0.5 h-6 md:h-8 bg-blue-400 rounded-full"
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
                 />
-                <motion.p
-                  className="mt-2 sm:mt-4 text-xs sm:text-sm opacity-70"
-                  style={{ color: currentColors.muted }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  Loading my best work for you...
-                </motion.p>
               </motion.div>
-            )}
-          </motion.div>
+              <motion.p
+                className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2 }}
+              >
+                Welcome to my portfolio - where AI meets innovation
+              </motion.p>
+            </motion.div>
+          )}
+
+          {/* Loading Indicator */}
+          {phase >= 3 && (
+            <motion.div
+              variants={contentVariants}
+              className="flex flex-col items-center space-y-4"
+            >
+              <motion.div className="flex space-x-2">
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.5, 1, 0.5],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                    }}
+                  />
+                ))}
+              </motion.div>
+              <motion.p
+                className="text-gray-400 text-sm tracking-wide"
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                Loading excellence...
+              </motion.p>
+            </motion.div>
+          )}
         </div>
       </motion.div>
     </div>
