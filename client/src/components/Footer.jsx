@@ -60,11 +60,11 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="px-6 py-12 mt-20">
-      <div className="max-w-6xl mx-auto">
-        {/* Glass background container */}
+    <footer className="px-4 py-16">
+      <div className="max-w-7xl mx-auto">
+        {/* Main Footer */}
         <motion.div
-          className="backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 rounded-xl p-8 border border-white/20 dark:border-gray-700/50 shadow-lg"
+          className="p-8 bg-black/30 border border-white/20 rounded-3xl backdrop-blur-xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -72,14 +72,17 @@ export const Footer = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Branding */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                ZAID SOMAN
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Digital designer & developer creating meaningful experiences.
-              </p>
-              <div className="flex space-x-4">
+            <motion.div variants={itemVariants} className="space-y-6">
+              <div>
+                <h3 className="text-2xl font-bold text-white tracking-tight mb-3">
+                  ZAID SOMAN
+                </h3>
+                <p className="text-gray-400 leading-relaxed antialiased">
+                  AI/ML Engineer & Full-Stack Developer creating innovative solutions 
+                  with cutting-edge technology.
+                </p>
+              </div>
+              <div className="flex space-x-3">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={index}
@@ -87,8 +90,10 @@ export const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-300"
-                    whileHover={{ y: -2 }}
+                    className="p-3 rounded-xl bg-black/30 border border-white/10 text-gray-400 
+                             hover:text-white hover:border-blue-500/30 hover:bg-black/40 
+                             transition-all duration-300"
+                    whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     {social.icon}
@@ -99,19 +104,20 @@ export const Footer = () => {
 
             {/* Navigation */}
             <motion.div variants={itemVariants}>
-              <h4 className="text-gray-900 dark:text-white font-medium mb-4 text-sm uppercase tracking-wider">
+              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-[0.2em]">
                 Navigation
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {quickLinks.map((link, index) => (
                   <motion.li
                     key={index}
-                    whileHover={{ x: 2 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    whileHover={{ x: 4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <a
                       href={link.href}
-                      className="hover:text-gray-900 dark:hover:text-white transition-colors duration-300 text-sm text-gray-600 dark:text-gray-300"
+                      className="text-gray-400 hover:text-white transition-colors duration-300 
+                               font-medium tracking-wide"
                     >
                       {link.name}
                     </a>
@@ -122,28 +128,29 @@ export const Footer = () => {
 
             {/* Contact */}
             <motion.div variants={itemVariants}>
-              <h4 className="text-gray-900 dark:text-white font-medium mb-4 text-sm uppercase tracking-wider">
+              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-[0.2em]">
                 Contact
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <motion.li
                     key={index}
-                    className="flex items-start space-x-3 text-sm"
-                    whileHover={{ scale: 1.02 }}
+                    className="flex items-center space-x-3"
+                    whileHover={{ scale: 1.02, x: 2 }}
                   >
-                    <span className="text-gray-600 dark:text-gray-400 mt-0.5">
+                    <span className="text-gray-400">
                       {info.icon}
                     </span>
                     {info.href ? (
                       <a
                         href={info.href}
-                        className="hover:text-gray-900 dark:hover:text-white transition-colors duration-300 text-gray-600 dark:text-gray-300"
+                        className="text-gray-400 hover:text-white transition-colors duration-300 
+                                 font-medium tracking-wide"
                       >
                         {info.text}
                       </a>
                     ) : (
-                      <span className="text-gray-600 dark:text-gray-300">
+                      <span className="text-gray-400 font-medium tracking-wide">
                         {info.text}
                       </span>
                     )}
@@ -153,69 +160,77 @@ export const Footer = () => {
             </motion.div>
 
             {/* Newsletter */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h4 className="text-gray-900 dark:text-white font-medium text-sm uppercase tracking-wider">
-                Newsletter
+            <motion.div variants={itemVariants} className="space-y-6">
+              <h4 className="text-white font-bold text-sm uppercase tracking-[0.2em]">
+                Stay Updated
               </h4>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Subscribe to get updates on my latest work.
+              <p className="text-gray-400 leading-relaxed antialiased">
+                Get notified about my latest projects and AI/ML insights.
               </p>
               <form className="space-y-3">
                 <input
                   type="email"
-                  placeholder="Your email"
-                  className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 dark:bg-gray-800/50 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-900 dark:focus:ring-gray-300 focus:border-gray-900 dark:focus:border-gray-300 w-full"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 rounded-2xl bg-black/40 border border-white/20 
+                           text-white placeholder-gray-500 backdrop-blur-sm
+                           focus:outline-none focus:border-blue-500/50 focus:bg-black/50 
+                           transition-all duration-300"
                   required
                 />
-                <button
+                <motion.button
                   type="submit"
-                  className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 dark:text-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 w-full"
+                  className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 
+                           text-white font-semibold transition-all duration-300 
+                           hover:shadow-2xl hover:shadow-blue-500/25"
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   Subscribe
-                </button>
+                </motion.button>
               </form>
             </motion.div>
           </div>
 
           {/* Bottom bar */}
           <motion.div
-            className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700/50 flex flex-col items-center text-xs text-gray-600 dark:text-gray-400 space-y-4 sm:space-y-0 sm:flex-row sm:justify-between"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            className="mt-12 pt-8 border-t border-white/10 flex flex-col items-center 
+                     space-y-4 sm:space-y-0 sm:flex-row sm:justify-between"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
             <div>
-              <p>© {currentYear} Zaid Soman. All rights reserved.</p>
+              <p className="text-gray-400 font-medium tracking-wide">
+                © {currentYear} Zaid Soman. All rights reserved.
+              </p>
             </div>
 
             <div className="flex items-center space-x-6">
               <a
                 href="#"
-                className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors duration-300 
+                         font-medium tracking-wide"
               >
                 Privacy
               </a>
               <a
                 href="#"
-                className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors duration-300 
+                         font-medium tracking-wide"
               >
                 Terms
-              </a>
-              <a
-                href="#"
-                className="hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                Cookies
               </a>
               <motion.a
                 href="#hero"
                 aria-label="Back to top"
-                className="p-2 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300"
-                whileHover={{ y: -3 }}
+                className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 
+                         text-white transition-all duration-300 hover:shadow-2xl 
+                         hover:shadow-blue-500/25"
+                whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <ArrowUp size={16} />
+                <ArrowUp size={18} />
               </motion.a>
             </div>
           </motion.div>
