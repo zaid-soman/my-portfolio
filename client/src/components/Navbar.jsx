@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+﻿import { useEffect, useState, useRef } from "react";
 import {
   Home,
   User,
@@ -30,21 +30,16 @@ const ThemeToggle = () => {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme");
-    if (stored === "light") {
-      document.documentElement.classList.remove("dark");
-      setTheme("light");
-    } else {
-      document.documentElement.classList.add("dark");
-      setTheme("dark");
-    }
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(savedTheme);
+    document.documentElement.classList.toggle("dark", savedTheme === "dark");
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
-    document.documentElement.classList.toggle("dark");
-    localStorage.setItem("theme", newTheme);
     setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
   return (
@@ -90,8 +85,8 @@ export const Navbar = () => {
 
       return () => {
         if (audioRef.current) {
-          audioRef.current.pause();
           audioRef.current.removeEventListener("canplaythrough", handleCanPlay);
+          audioRef.current.pause();
           audioRef.current = null;
         }
       };
@@ -99,23 +94,30 @@ export const Navbar = () => {
   }, []);
 
   const toggleMusic = () => {
-    if (!audioRef.current || !isAudioReady) return;
-
-    if (isMusicPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play().catch(console.error);
+    if (audioRef.current && isAudioReady) {
+      if (isMusicPlaying) {
+        audioRef.current.pause();
+        setIsMusicPlaying(false);
+      } else {
+        audioRef.current.play().catch(console.error);
+        setIsMusicPlaying(true);
+      }
     }
-
-    setIsMusicPlaying(!isMusicPlaying);
   };
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const scrollThreshold = 50;
 
-      if (currentScrollY > lastScrollYRef.current && currentScrollY > 100) {
-        setShowNavbar(false);
+      if (currentScrollY > scrollThreshold) {
+        const scrollDifference = currentScrollY - lastScrollYRef.current;
+
+        if (scrollDifference > 10) {
+          setShowNavbar(false);
+        } else if (scrollDifference < -15) {
+          setShowNavbar(true);
+        }
       } else {
         setShowNavbar(true);
       }
@@ -142,20 +144,24 @@ export const Navbar = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {/* Top Right Buttons */}
       <motion.div
-        className="fixed top-6 right-6 z-50 flex gap-3"
+        className={cn(
+          "fixed top-6 right-6 z-50 flex gap-3",
+          "transition-all duration-500 ease-out",
+          showNavbar
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-full opacity-0"
+        )}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Social Links */}
         <motion.a
           href="https://github.com/zaid-soman"
           target="_blank"
@@ -201,33 +207,33 @@ export const Navbar = () => {
           <Twitter className="w-5 h-5" />
         </motion.a>
 
-        {/* Music Button */}
+        <ThemeToggle />
+
         <motion.button
           onClick={toggleMusic}
           disabled={!isAudioReady}
           className={cn(
             "p-3 rounded-xl bg-black/30 border border-white/20 backdrop-blur-xl transition-all duration-300",
             isAudioReady
-              ? "text-green-400 hover:text-green-300 hover:border-green-500/30 hover:bg-black/40"
-              : "text-gray-600 cursor-not-allowed"
+              ? isMusicPlaying
+                ? "text-green-400 hover:text-green-300 hover:border-green-500/30 hover:bg-black/40"
+                : "text-gray-400 hover:text-white hover:border-white/30 hover:bg-black/40"
+              : "text-gray-600 cursor-not-allowed opacity-50"
           )}
-          whileHover={{
-            scale: isAudioReady ? 1.05 : 1,
-            y: isAudioReady ? -2 : 0,
-          }}
-          whileTap={{ scale: isAudioReady ? 0.95 : 1 }}
+          whileHover={isAudioReady ? { scale: 1.05, y: -2 } : {}}
+          whileTap={isAudioReady ? { scale: 0.95 } : {}}
           title={
             isAudioReady
               ? isMusicPlaying
-                ? "Pause music"
-                : "Play music"
-              : "Loading music..."
+                ? "Pause Music"
+                : "Play Music"
+              : "Loading..."
           }
           aria-label={
             isAudioReady
               ? isMusicPlaying
-                ? "Pause music"
-                : "Play music"
+                ? "Pause Music"
+                : "Play Music"
               : "Loading music"
           }
         >
@@ -239,24 +245,33 @@ export const Navbar = () => {
         </motion.button>
       </motion.div>
 
-      {/* Bottom Navbar */}
       <motion.div
         className={cn(
           "fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50",
-          "transition-all duration-500 ease-out",
+          "transition-all duration-700 ease-out",
           showNavbar
-            ? "translate-y-0 opacity-100"
-            : "translate-y-full opacity-0"
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "translate-y-20 opacity-0 pointer-events-none"
         )}
         initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        animate={{
+          y: showNavbar ? 0 : 20,
+          opacity: showNavbar ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.6,
+          ease: [0.16, 1, 0.3, 1],
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
       >
         <div
-          className="flex items-center justify-center bg-black/30 border border-white/20 
-                      backdrop-blur-xl rounded-3xl p-2 shadow-2xl"
+          className="flex items-center justify-center bg-black/40 border border-white/30 
+                        backdrop-blur-2xl rounded-2xl p-3 shadow-2xl shadow-black/20
+                        hover:bg-black/50 hover:border-white/40 transition-all duration-300"
         >
-          <div className="flex space-x-1 items-center">
+          <div className="flex space-x-2 items-center">
             {navItems.map((item, index) => {
               const isActive = activeSection === item.href;
               return (
@@ -264,45 +279,52 @@ export const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "relative p-3 rounded-2xl transition-all duration-300 flex flex-col items-center group",
+                    "relative p-3 rounded-xl transition-all duration-300 flex flex-col items-center group min-w-[60px]",
                     isActive
-                      ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
-                      : "text-gray-400 hover:text-white hover:bg-white/10"
+                      ? "bg-gradient-to-r from-blue-500/90 to-purple-600/90 text-white shadow-lg shadow-blue-500/25"
+                      : "text-gray-400 hover:text-white hover:bg-white/15 hover:shadow-md"
                   )}
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileHover={{ scale: 1.08, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 0.3,
-                    delay: index * 0.05,
+                    delay: index * 0.1,
                     type: "spring",
-                    stiffness: 300,
-                    damping: 20,
+                    stiffness: 400,
+                    damping: 25,
                   }}
                   aria-label={item.name}
                 >
-                  <item.icon className="w-5 h-5" />
-                  <span className="text-xs mt-1 font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {item.name}
-                  </span>
                   {isActive && (
                     <motion.div
-                      className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 
-                               bg-white rounded-full"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.3 }}
+                      className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"
+                      layoutId="activeIndicator"
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      }}
                     />
                   )}
+
+                  <item.icon
+                    className={cn(
+                      "w-5 h-5 transition-all duration-300",
+                      isActive ? "scale-110" : "group-hover:scale-110"
+                    )}
+                  />
+
+                  <motion.span
+                    className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none"
+                    initial={{ opacity: 0, y: 5 }}
+                    whileHover={{ opacity: 1, y: 0 }}
+                  >
+                    {item.name}
+                  </motion.span>
                 </motion.a>
               );
             })}
-
-            {/* Theme Toggle in Navbar */}
-            <div className="ml-2 pl-2 border-l border-white/20">
-              <ThemeToggle />
-            </div>
           </div>
         </div>
       </motion.div>

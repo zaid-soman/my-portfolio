@@ -1,5 +1,4 @@
-import {
-  ArrowDown,
+﻿import {
   MousePointerClick,
   Sparkles,
   Code,
@@ -33,6 +32,12 @@ export const HeroSection = () => {
     {
       text: "Full-Stack Developer",
       icon: Code,
+      color: "text-green-400",
+      gradient: "from-green-400/10 to-teal-400/10",
+    },
+    {
+      text: "Problem Solver",
+      icon: Sparkles,
       color: "text-emerald-400",
       gradient: "from-emerald-400/10 to-teal-400/10",
     },
@@ -44,7 +49,6 @@ export const HeroSection = () => {
     },
   ];
 
-  // Auto-cycle through roles
   useEffect(() => {
     const interval = setInterval(() => {
       setRoleIndex((prev) => (prev + 1) % roles.length);
@@ -75,17 +79,6 @@ export const HeroSection = () => {
     },
   };
 
-  const floatingVariants = {
-    float: {
-      y: [0, -8, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
   const currentRole = roles[roleIndex];
 
   return (
@@ -94,42 +87,8 @@ export const HeroSection = () => {
       className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
       ref={ref}
     >
-      {/* Clean gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/98 to-background/95" />
 
-      {/* Enhanced glassmorphism overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/5 to-background/10 backdrop-blur-[0.5px]" />
-
-      {/* Subtle accent gradients */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-r from-primary/2 to-purple-500/2 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-r from-secondary/2 to-blue-500/2 rounded-full blur-3xl" />
-
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: Math.random() * 4 + 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Main content container */}
       <div className="container max-w-6xl mx-auto text-center relative z-10 py-8 sm:py-12">
         <motion.div
           className="space-y-6 sm:space-y-8 md:space-y-10"
@@ -137,27 +96,19 @@ export const HeroSection = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* Role indicator */}
           <motion.div variants={itemVariants}>
-            <motion.div
-              className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-background/60 backdrop-blur-xl border border-border/30 rounded-full shadow-lg hover:shadow-2xl transition-all duration-500"
-              whileHover={{ scale: 1.05, y: -2 }}
-              variants={floatingVariants}
-              animate="float"
-            >
+            <motion.div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-background/60 backdrop-blur-xl border border-border/30 rounded-full shadow-lg hover:shadow-2xl transition-all duration-500">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={roleIndex}
                   className="flex items-center gap-2 sm:gap-3"
-                  initial={{ opacity: 0, x: 15, scale: 0.9 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: -15, scale: 0.9 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  initial={{ opacity: 0, x: 15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -15 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <motion.div
                     className={`p-1.5 sm:p-2 rounded-full bg-gradient-to-r ${currentRole.gradient} border border-white/10`}
-                    whileHover={{ rotate: 180, scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
                   >
                     <currentRole.icon
                       className={`w-3 h-3 sm:w-4 sm:h-4 ${currentRole.color}`}
@@ -171,109 +122,49 @@ export const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Main heading */}
-          <motion.div
-            variants={itemVariants}
-            className="space-y-3 sm:space-y-4"
-          >
+          <motion.div variants={itemVariants}>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.85] sm:leading-[0.9]">
-              <motion.span
-                className="block text-foreground/90 mb-2 sm:mb-3"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.4,
-                  duration: 0.7,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                }}
-              >
-                Hi, I&apos;m
-              </motion.span>
-              <motion.span
-                className="block bg-gradient-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent font-extrabold relative"
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{
-                  delay: 0.6,
-                  duration: 0.8,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                }}
-                whileHover={{ scale: 1.02 }}
-              >
+              <span className="block bg-gradient-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent font-extrabold">
                 Zaid Soman
-                <motion.div
-                  className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-primary/5 via-purple-500/5 to-secondary/5 rounded-2xl sm:rounded-3xl blur-xl -z-10"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.2, duration: 1 }}
-                />
-              </motion.span>
+              </span>
             </h1>
           </motion.div>
 
-          {/* Description */}
-          <motion.div
-            variants={itemVariants}
-            className="space-y-3 sm:space-y-4"
-          >
+          <motion.div variants={itemVariants}>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-medium tracking-wide px-2 sm:px-0">
-              Computer Science student specializing in{" "}
+              CS student specializing in{" "}
               <span className="text-foreground font-semibold">
-                Artificial Intelligence & Machine Learning
+                AI & Machine Learning
               </span>
-              , passionate about building intelligent systems that solve
-              real-world problems.
             </p>
           </motion.div>
 
-          {/* Action buttons */}
           <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-4 sm:pt-6 px-4 sm:px-0"
           >
             <motion.a
-              href="#projects"
-              className="group relative inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-primary text-primary-foreground rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden w-full sm:w-auto justify-center"
+              href="/Zaid-Soman-cv.pdf"
+              download="Zaid-Soman-CV.pdf"
+              className="group relative inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-background/60 backdrop-blur-xl border border-border/30 text-foreground rounded-lg font-semibold text-base sm:text-lg hover:bg-background/80 transition-all duration-500 shadow-lg hover:shadow-2xl w-full sm:w-auto justify-center"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                initial={false}
-              />
-              <span className="relative z-10">View My Work</span>
-              <motion.div
-                className="relative z-10"
-                animate={{ y: [0, 2, 0] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.div>
+              <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span>Download Resume</span>
             </motion.a>
 
             <motion.a
               href="#contact"
-              className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-background/60 backdrop-blur-xl border border-border/30 text-foreground rounded-full font-semibold text-base sm:text-lg hover:bg-background/80 transition-all duration-500 shadow-lg hover:shadow-2xl w-full sm:w-auto justify-center"
+              className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-base sm:text-lg shadow-lg hover:shadow-2xl transition-all duration-500 w-full sm:w-auto justify-center"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              <motion.div
-                whileHover={{ rotate: 15, scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.div>
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
               <span>Get In Touch</span>
             </motion.a>
           </motion.div>
 
-          {/* CV Download */}
           <motion.div variants={itemVariants} className="pt-4">
             <motion.a
               href="/Zaid-Soman-cv.pdf"
@@ -290,22 +181,16 @@ export const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 1.8,
-          duration: 0.8,
-          ease: [0.25, 0.46, 0.45, 0.94],
-        }}
+        transition={{ delay: 1.8, duration: 0.8 }}
       >
         <motion.div
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-pointer group"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          whileHover={{ scale: 1.1 }}
           onClick={() =>
             document
               .getElementById("about")
