@@ -105,13 +105,10 @@ export const ContactSection = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-24 px-4 relative"
-    >
+    <section id="contact" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -133,21 +130,27 @@ export const ContactSection = () => {
           </motion.div>
 
           <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white tracking-tight antialiased">
-            Get In 
-            <span className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 
-                           bg-clip-text text-transparent"> Touch</span>
+            Get In
+            <span
+              className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 
+                           bg-clip-text text-transparent"
+            >
+              {" "}
+              Touch
+            </span>
           </h2>
 
           <p className="text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed antialiased">
-            Ready to bring your ideas to life? Let&apos;s discuss how my AI/ML expertise 
-            and full-stack development skills can help solve your challenges.
+            Ready to bring your ideas to life? Let&apos;s discuss how my AI/ML
+            expertise and full-stack development skills can help solve your
+            challenges.
           </p>
         </motion.div>
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <motion.div 
+          <motion.div
             className="space-y-8 p-8 bg-black/30 border border-white/20 rounded-3xl backdrop-blur-xl"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -168,22 +171,22 @@ export const ContactSection = () => {
                   label: "Email",
                   value: "codesoman@gmail.com",
                   href: "mailto:codesoman@gmail.com",
-                  color: "from-blue-500 to-cyan-500"
+                  color: "from-blue-500 to-cyan-500",
                 },
                 {
                   icon: Phone,
                   label: "Phone",
                   value: "+962 778085117",
                   href: "tel:+962778085117",
-                  color: "from-green-500 to-emerald-500"
+                  color: "from-green-500 to-emerald-500",
                 },
                 {
                   icon: MapPin,
                   label: "Location",
                   value: "Amman, Jordan",
                   href: null,
-                  color: "from-purple-500 to-pink-500"
-                }
+                  color: "from-purple-500 to-pink-500",
+                },
               ].map((contact, index) => (
                 <motion.div
                   key={index}
@@ -195,7 +198,9 @@ export const ContactSection = () => {
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${contact.color} bg-opacity-20`}>
+                  <div
+                    className={`p-3 rounded-xl bg-gradient-to-br ${contact.color} bg-opacity-20`}
+                  >
                     <contact.icon className="h-5 w-5 text-white" />
                   </div>
                   <div className="flex-1">
@@ -220,7 +225,7 @@ export const ContactSection = () => {
             </div>
 
             {/* Social Links */}
-            <motion.div 
+            <motion.div
               className="pt-8 border-t border-white/10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -236,19 +241,19 @@ export const ContactSection = () => {
                     icon: Linkedin,
                     label: "LinkedIn",
                     url: "https://www.linkedin.com/in/zaid-soman/",
-                    color: "hover:bg-blue-600/20 hover:border-blue-500/30"
+                    color: "hover:bg-blue-600/20 hover:border-blue-500/30",
                   },
                   {
                     icon: Twitter,
                     label: "Twitter",
                     url: "https://twitter.com/",
-                    color: "hover:bg-cyan-500/20 hover:border-cyan-500/30"
+                    color: "hover:bg-cyan-500/20 hover:border-cyan-500/30",
                   },
                   {
                     icon: Github,
                     label: "GitHub",
                     url: "https://github.com/zaid-soman",
-                    color: "hover:bg-purple-600/20 hover:border-purple-500/30"
+                    color: "hover:bg-purple-600/20 hover:border-purple-500/30",
                   },
                 ].map((social, index) => (
                   <motion.a
@@ -270,7 +275,7 @@ export const ContactSection = () => {
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div 
+          <motion.div
             className="p-8 bg-black/30 border border-white/20 rounded-3xl backdrop-blur-xl"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -285,7 +290,7 @@ export const ContactSection = () => {
             </div>
 
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <motion.div 
+              <motion.div
                 className="space-y-2"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -313,7 +318,7 @@ export const ContactSection = () => {
                 />
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className="space-y-2"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -341,7 +346,7 @@ export const ContactSection = () => {
                 />
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className="space-y-2"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -374,8 +379,8 @@ export const ContactSection = () => {
                 disabled={isSubmitting}
                 className={cn(
                   "w-full flex items-center justify-center gap-3 py-4 px-6 rounded-2xl font-semibold transition-all duration-300",
-                  isSubmitting 
-                    ? "bg-gray-600/50 text-gray-400 cursor-not-allowed" 
+                  isSubmitting
+                    ? "bg-gray-600/50 text-gray-400 cursor-not-allowed"
                     : "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-2xl hover:shadow-blue-500/25 hover:scale-[1.02]"
                 )}
                 whileHover={!isSubmitting ? { y: -2 } : {}}

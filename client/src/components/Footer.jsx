@@ -78,8 +78,8 @@ export const Footer = () => {
                   ZAID SOMAN
                 </h3>
                 <p className="text-gray-400 leading-relaxed antialiased">
-                  AI/ML Engineer & Full-Stack Developer creating innovative solutions 
-                  with cutting-edge technology.
+                  AI/ML Engineer & Full-Stack Developer creating innovative
+                  solutions with cutting-edge technology.
                 </p>
               </div>
               <div className="flex space-x-3">
@@ -138,9 +138,7 @@ export const Footer = () => {
                     className="flex items-center space-x-3"
                     whileHover={{ scale: 1.02, x: 2 }}
                   >
-                    <span className="text-gray-400">
-                      {info.icon}
-                    </span>
+                    <span className="text-gray-400">{info.icon}</span>
                     {info.href ? (
                       <a
                         href={info.href}
