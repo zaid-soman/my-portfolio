@@ -164,20 +164,6 @@ export const HeroSection = () => {
               <span>Get In Touch</span>
             </motion.a>
           </motion.div>
-
-          <motion.div variants={itemVariants} className="pt-4">
-            <motion.a
-              href="/Zaid-Soman-cv.pdf"
-              download
-              className="group inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
-              whileHover={{ y: -2 }}
-            >
-              <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-300" />
-              <span className="text-sm font-medium tracking-wide">
-                Download Resume
-              </span>
-            </motion.a>
-          </motion.div>
         </motion.div>
       </div>
 

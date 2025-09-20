@@ -153,14 +153,20 @@ export const Navbar = () => {
       <motion.div
         className={cn(
           "fixed top-6 right-6 z-50 flex gap-3",
-          "transition-all duration-500 ease-out",
-          showNavbar
-            ? "translate-y-0 opacity-100"
-            : "-translate-y-full opacity-0"
+          "transition-all duration-700 ease-out"
         )}
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        animate={{
+          y: showNavbar ? 0 : -80,
+          opacity: showNavbar ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.6,
+          ease: [0.16, 1, 0.3, 1],
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
       >
         <motion.a
           href="https://github.com/zaid-soman"
