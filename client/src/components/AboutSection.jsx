@@ -117,14 +117,13 @@ export const AboutSection = () => {
 
               <div className="space-y-3 sm:space-y-4 md:space-y-6">
                 <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/80 font-medium tracking-wide">
-                  Recent Data Science and AI graduate with proven expertise in
-                  machine learning, full-stack development, and data-driven
-                  problem-solving. Experienced in building intelligent systems
-                  using React, Node.js, PostgreSQL, and Python. Successfully
-                  delivered projects including NLP-powered search engines and
-                  AI-enhanced project management systems. Passionate about
-                  applying AI and data science to create innovative solutions
-                  that drive real-world impact.
+                  Data Science & AI graduate with expertise in machine learning,
+                  full-stack development, and data-driven problem-solving.
+                  Skilled in building intelligent systems using React, Node.js,
+                  PostgreSQL, and Python. Delivered projects including
+                  NLP-powered search engines and AI-enhanced project management
+                  tools. Passionate about leveraging AI and data science to
+                  create impactful, real-world solutions.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">

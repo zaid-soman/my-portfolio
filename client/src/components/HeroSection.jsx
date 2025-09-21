@@ -18,7 +18,7 @@ export const HeroSection = () => {
 
   const roles = [
     {
-      text: "Data Science Graduate",
+      text: "Data Science & AI ",
       icon: Lightbulb,
       color: "text-blue-400",
       gradient: "from-blue-400/10 to-cyan-400/10",
@@ -132,7 +132,7 @@ export const HeroSection = () => {
 
           <motion.div variants={itemVariants}>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-medium tracking-wide px-2 sm:px-0">
-              Recent graduate specializing in{" "}
+              specializing in{" "}
               <span className="text-foreground font-semibold">
                 Data Science & Artificial Intelligence
               </span>{" "}
